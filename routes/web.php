@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('projects.hello');
 });
+
+Route::get('/projects', 'ProjectsController@create');
+Route::post('/projects', 'ProjectsController@store');
