@@ -21,28 +21,28 @@
         </ul>
         <hr>
         
-       <form action="/projects" method="post" @submit.prevent="onSubmit" @keydown="errors.clear($event.target.name)">
+       <form action="/projects" method="post" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
             @csrf
             
             <div class="field">
                 <label class="label">Project Name</label>
                 <div class="control">
-                    <input name="name" class="input" type="text" placeholder="Project name" v-model="name">
+                    <input name="name" class="input" type="text" placeholder="Project name" v-model="form.name">
                 </div>
-                <span v-if="errors.has('name')" class="help is-danger" v-text="errors.get('name')"></span>
+                <span v-if="form.errors.has('name')" class="help is-danger" v-text="form.errors.get('name')"></span>
             </div>
 
             <div class="field">
                 <label class="label">Project Descriptpon</label>
                 <div class="control">
-                    <textarea name="description" class="textarea" placeholder="Description" v-model="description"></textarea>
+                    <textarea name="description" class="textarea" placeholder="Description" v-model="form.description"></textarea>
                 </div>
-                <span v-if="errors.has('description')" class="help is-danger" v-text="errors.get('description')"></span>
+                <span v-if="form.errors.has('description')" class="help is-danger" v-text="form.errors.get('description')"></span>
             </div>
 
             <div class="field is-grouped">
                 <div class="control">
-                    <button :disabled="errors.any()" class="button is-primary">Create</button>
+                    <button :disabled="form.errors.any()" class="button is-primary">Create</button>
                 </div>
             </div>
         </form>
